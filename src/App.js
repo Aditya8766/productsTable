@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import ProductTable from "./components/ProductTable";
+import Search from "./components/Search";
+import getProducts from "./services";
+function Products() {
+  const [productData, setproductData] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
-function App() {
+  const Data = async () => {
+    const products = await getProducts();
+    setproductData(products);
+    setFilteredData(products);
+  };
+
+  useEffect(() => {
+    Data();
+  }, []);
+
+  useEffect(() => {
+    const filter = productData.filter((val) =>
+      val.title.toLowerCase().includes(searchText)
+    );
+    setFilteredData([...filter]);
+  }, [searchText]);
+
+  const handleSearch = (event) => {
+    let value = event.target.value;
+    setSearchText(value);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Search handleSearch={handleSearch} searchText={searchText} />
+      <ProductTable
+        headerText={"Apple Products Store"}
+        filteredData={filteredData}
+      />
     </div>
   );
 }
 
-export default App;
+export default Products;
