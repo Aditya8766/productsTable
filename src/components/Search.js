@@ -1,5 +1,5 @@
 import React from "react";
-import "./search.css";
+import "./search.scss";
 
 function Search(props) {
   const {handleSearch}=props;

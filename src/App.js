@@ -2,24 +2,25 @@ import React, { useEffect, useState } from "react";
 import ProductTable from "./components/ProductTable";
 import Search from "./components/Search";
 import getProducts from "./services";
+import "./App.css";
 function Products() {
   const [productData, setproductData] = useState([]);
-  const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-  const Data = async () => {
+  const data = async () => {
     const products = await getProducts();
     setproductData(products);
     setFilteredData(products);
   };
 
   useEffect(() => {
-    Data();
+    data();
   }, []);
 
   useEffect(() => {
     const filter = productData.filter((val) =>
-      val.title.toLowerCase().includes(searchText)
+      val.title.toLowerCase().includes(searchText.toLowerCase())
     );
     setFilteredData([...filter]);
   }, [searchText]);

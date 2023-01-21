@@ -1,4 +1,4 @@
-import "./products-table.css";
+import "./products-table.scss";
 function ProductTable(props) {
   const tableHeaders = [
     "Product-Id",
@@ -22,7 +22,7 @@ function ProductTable(props) {
         {filteredData?.map((data, index) => {
           return (
             <div
-              key={`${props.HeaderText}${index}`}
+              key={`${headerText}${index}`}
               className="table-container"
             >
               <div className="id">{`${data.id}`}</div>
