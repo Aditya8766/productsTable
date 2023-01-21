@@ -8,7 +8,9 @@
         display: flex;
         justify-content: space-between;
         border: 1px solid black;
+        padding-bottom: 24px;
         width: 100%;
+        background-color: aliceblue;
         .header-text{
             text-align: left;
             width: 13%;
@@ -24,6 +26,8 @@
             justify-content: space-between;
             width: 100%;
             border: 1px solid black;
+            border-color:rgb(163, 167, 165);
+            padding-bottom: 32px;
             .title{
                 margin-left: 43px;
             }

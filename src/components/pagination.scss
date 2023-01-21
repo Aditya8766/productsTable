@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+
+    button {
+        width: 40px;
+        height: 40px;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 16px;
+        margin: 0 10px;
+        border-radius: 6px;
+        cursor: pointer;
+        border-color: #eee; 
+        background-color: aliceblue;
+
+       
+    }
+    button.active {
+        font-weight: 900;
+        border-color: #101010;
+        color: #101010;
+        background-color:aquamarine;
+    }
+}
+
+
