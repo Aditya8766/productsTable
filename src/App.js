@@ -9,7 +9,8 @@ function Products() {
   const [filteredData, setFilteredData] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage] = useState(3);
+  const [postPerPage] = useState(4);
+  const [rowsPerPage, setRowsPerPage] = useState(4);
 
   const handleData = async () => {
     const products = await getProducts();
@@ -33,9 +34,14 @@ function Products() {
     setSearchText(value);
   };
 
-  const lastPostIndex = currentPage * postPerPage;
-  const firstPostIndex = lastPostIndex - postPerPage;
+  const lastPostIndex = currentPage * rowsPerPage;
+  const firstPostIndex = lastPostIndex - rowsPerPage;
   const currentPost = filteredData?.slice(firstPostIndex, lastPostIndex);
+
+  const handleChangeRowsPerPage = (e) => {
+    e.preventDefault();
+    setRowsPerPage(e.target.value);
+  };
 
   return (
     <div className="App">
@@ -45,10 +51,14 @@ function Products() {
         filteredData={currentPost}
       />
       <Pagination
+        headerText={"Apple Products Store"}
         totalPosts={filteredData.length}
         postPerPage={postPerPage}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
+        handleChangeRowsPerPage={handleChangeRowsPerPage}
+        rowsPerPage={rowsPerPage}
+        rows={["4", "5", "6", "10"]}
       />
     </div>
   );

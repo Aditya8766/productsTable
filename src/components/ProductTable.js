@@ -21,10 +21,7 @@ function ProductTable(props) {
       <div className="table">
         {filteredData?.map((data, index) => {
           return (
-            <div
-              key={`${headerText}${index}`}
-              className="table-container"
-            >
+            <div key={`${headerText}${index}`} className="table-container">
               <div className="id">{`${data.id}`}</div>
               <div className="title">{`${data.title}`}</div>
               <div className="description">{`${data.description}`}</div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./search.scss";
 
 function Search(props) {
-  const {handleSearch}=props;
+  const { handleSearch } = props;
   return (
     <div className="search">
       <input
